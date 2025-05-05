@@ -19,6 +19,18 @@ namespace SchoolSystem.APIRepositories
             _context.SaveChanges();
         }
 
+        public int DeleteRecord(TeachersModel model)
+        {
+            int Retstatus = 0;
+            if(model!=null)
+            {
+                _context.Tbl_TeachersBio.Remove(model);
+                _context.SaveChanges();
+                Retstatus = 1;
+            }
+            return Retstatus;
+        }
+
         public List<TeachersModel> GetAll()
         {
             List<TeachersModel> liteacher = new List<TeachersModel>();
@@ -27,6 +39,19 @@ namespace SchoolSystem.APIRepositories
             if(liteacher==null)
             {
                 
+            }
+
+            return liteacher;
+        }
+
+        public TeachersModel GetByID(int? ID)
+        {
+            TeachersModel liteacher = new TeachersModel();
+
+            liteacher = _context.Tbl_TeachersBio.Where(x=>x.ID==ID).FirstOrDefault();
+            if (liteacher == null)
+            {
+
             }
 
             return liteacher;
