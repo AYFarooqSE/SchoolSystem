@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolSystem.APIServices;
+using SchoolSystem.APIServices.V2;
 using SchoolSystem.Models;
 
 namespace SchoolSystem.Controllers
@@ -9,16 +10,16 @@ namespace SchoolSystem.Controllers
     [ApiController]
     public class TeachersController : ControllerBase
     {
-        private ITeacherService _repo;
-        public TeachersController(ITeacherService repo)
+        private ITeacherServicev2 _repo;
+        public TeachersController(ITeacherServicev2 repo)
         {
             _repo = repo;
         }
 
         [HttpGet("GetTeachersBio")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var model = _repo.GetAll();
+            var model = await _repo.GetAll();
 
             return Ok(model);
         }
@@ -28,7 +29,7 @@ namespace SchoolSystem.Controllers
         {
             if (model != null)
             {
-                _repo.AddTeacherInfo(model);
+                //_repo.AddTeacherInfo(model);
             }
 
             return Ok(model);
@@ -48,7 +49,7 @@ namespace SchoolSystem.Controllers
             var modelToDelete = _repo.GetByID(ID);
             if(modelToDelete!=null)
             {
-                _repo.DeleteRecord(modelToDelete);
+                //_repo.DeleteRecord(modelToDelete);
             }
             return Ok(modelToDelete);
         }
