@@ -7,5 +7,6 @@ namespace SchoolSystem.APIServices.V2
         Task<List<TeachersModel>> GetAll();
         Task<TeachersModel> GetByID(int? ID);
 
+        Task<bool> AddTeacherInfo(TeachersModel model);
     }
 }

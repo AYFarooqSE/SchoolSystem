@@ -12,6 +12,19 @@ namespace SchoolSystem.APIRepositories.V2
         {
             _context = context;
         }
+
+        public async Task<bool> AddTeacherInfo(TeachersModel model)
+        {
+            bool Retstatus = false;
+            if(model!=null)
+            {
+                await _context.Tbl_TeachersBio.AddAsync(model);
+                await _context.SaveChangesAsync();
+                Retstatus= true;
+            }
+            return Retstatus;
+        }
+
         public async Task<List<TeachersModel>> GetAll()
         {
             List<TeachersModel> model = new List<TeachersModel>();

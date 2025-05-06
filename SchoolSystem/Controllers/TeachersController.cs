@@ -25,13 +25,17 @@ namespace SchoolSystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateNew([FromBody] TeachersModel model)
+        public async Task<IActionResult> CreateNew([FromBody] TeachersModel model)
         {
+            bool status = false;
             if (model != null)
             {
-                //_repo.AddTeacherInfo(model);
+              status=  await _repo.AddTeacherInfo(model);
             }
-
+            if(status==false)
+            {
+                ///
+            }
             return Ok(model);
         }
 
