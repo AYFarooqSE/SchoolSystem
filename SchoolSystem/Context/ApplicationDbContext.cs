@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolSystem.Models;
+using SchoolSystem.Models.StudentModels;
 
 namespace SchoolSystem.Data
 {
@@ -12,5 +13,6 @@ namespace SchoolSystem.Data
 
         // Table Names
         public DbSet<TeachersModel> Tbl_TeachersBio { get; set; }
+        public DbSet<StudentModel> StudentBio { get; set; }
     }
 }

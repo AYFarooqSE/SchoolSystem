@@ -1,6 +1,6 @@
 ﻿using SchoolSystem.Models;
 
-namespace SchoolSystem.APIServices
+namespace SchoolSystem.Interfaces
 {
     public interface ITeacherService
     {

@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
+using SchoolSystem.APIServices;
 using SchoolSystem.Interfaces;
-using SchoolSystem.Services;
 
 namespace SchoolSystem.MapperProfiles
 {
-    public class MapperProfile:Profile
+    public class MapperProfile : Profile
     {
-        public MapperProfile() 
+        public MapperProfile()
         {
             CreateMap<IStudentService, StudentService>();
         }

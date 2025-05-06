@@ -1,4 +1,4 @@
-﻿using SchoolSystem.APIServices;
+﻿using SchoolSystem.Interfaces;
 using SchoolSystem.Models;
 
 namespace SchoolSystem.APIRepositories
