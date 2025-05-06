@@ -1,4 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using SchoolSystem.APIRepositories;
+using SchoolSystem.APIRepositories.V2;
+using SchoolSystem.APIServices;
+using SchoolSystem.APIServices.V2;
 using SchoolSystem.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,10 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 // Adding Connection String Name
 builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(
     builder.Configuration.GetConnectionString("ConnectionStr")
     ));
+
+builder.Services.AddScoped<ITeacherServicev2, TeacherRepositoryv2>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
