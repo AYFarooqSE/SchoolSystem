@@ -8,5 +8,7 @@ namespace SchoolSystem.APIServices.V2
         Task<TeachersModel> GetByID(int? ID);
 
         Task<bool> AddTeacherInfo(TeachersModel model);
+
+        Task<bool> DeleteRecord(TeachersModel model);
     }
 }

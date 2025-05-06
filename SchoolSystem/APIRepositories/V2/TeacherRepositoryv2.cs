@@ -25,6 +25,18 @@ namespace SchoolSystem.APIRepositories.V2
             return Retstatus;
         }
 
+        public async Task<bool> DeleteRecord(TeachersModel model)
+        {
+            bool Retstatus = false;
+            if(model!=null)
+            {
+                _context.Tbl_TeachersBio.Remove(model);
+                await _context.SaveChangesAsync();
+                Retstatus= true;
+            }
+            return Retstatus;
+        }
+
         public async Task<List<TeachersModel>> GetAll()
         {
             List<TeachersModel> model = new List<TeachersModel>();

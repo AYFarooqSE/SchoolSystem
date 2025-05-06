@@ -48,12 +48,13 @@ namespace SchoolSystem.Controllers
         }
 
         [HttpDelete("{ID}")]
-        public IActionResult DeleteRecord(int? ID)
+        public async Task<IActionResult> DeleteRecord(int? ID)
         {
-            var modelToDelete = _repo.GetByID(ID);
+            bool status = false;
+            var modelToDelete = await _repo.GetByID(ID);
             if(modelToDelete!=null)
             {
-                //_repo.DeleteRecord(modelToDelete);
+                status= await _repo.DeleteRecord(modelToDelete);
             }
             return Ok(modelToDelete);
         }
