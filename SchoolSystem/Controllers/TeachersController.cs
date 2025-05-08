@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SchoolSystem.APIServices;
 using SchoolSystem.APIServices.V2;
 using SchoolSystem.Models;
+using SchoolSystem.Validators;
 
 namespace SchoolSystem.Controllers
 {
@@ -27,14 +28,20 @@ namespace SchoolSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateNew([FromBody] TeachersModel model)
         {
-            bool status = false;
-            if (model != null)
+            TeachersModelValidator validator = new TeachersModelValidator();
+            var result= validator.Validate(model);
+
+            if (ModelState.IsValid)
             {
-              status=  await _repo.AddTeacherInfo(model);
-            }
-            if(status==false)
-            {
-                ///
+                bool status = false;
+                if (model != null)
+                {
+                    status = await _repo.AddTeacherInfo(model);
+                }
+                if (status == false)
+                {
+                    ///
+                }
             }
             return Ok(model);
         }
@@ -52,9 +59,9 @@ namespace SchoolSystem.Controllers
         {
             bool status = false;
             var modelToDelete = await _repo.GetByID(ID);
-            if(modelToDelete!=null)
+            if (modelToDelete != null)
             {
-                status= await _repo.DeleteRecord(modelToDelete);
+                status = await _repo.DeleteRecord(modelToDelete);
             }
             return Ok(modelToDelete);
         }

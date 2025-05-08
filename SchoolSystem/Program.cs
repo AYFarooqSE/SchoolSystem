@@ -4,12 +4,21 @@ using SchoolSystem.APIRepositories.V2;
 using SchoolSystem.APIServices;
 using SchoolSystem.APIServices.V2;
 using SchoolSystem.Data;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using SchoolSystem.Validators;
+using SchoolSystem.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
+
+//builder.Services.AddScoped < IValidator<TeachersModel>, TeachersModelValidator > ();
 
 // Adding Connection String Name
 builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(
