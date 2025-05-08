@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using SchoolSystem.APIServices;
 using SchoolSystem.Data;
+using SchoolSystem.Interfaces;
 using SchoolSystem.Models;
 
 namespace SchoolSystem.APIRepositories
