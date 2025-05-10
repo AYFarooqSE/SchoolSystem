@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using SchoolSystem.APIServices;
 using SchoolSystem.Interfaces;
+using SchoolSystem.Models.StudentModels;
+using SchoolSystem.Requests;
 
 namespace SchoolSystem.MapperProfiles
 {
@@ -8,7 +10,7 @@ namespace SchoolSystem.MapperProfiles
     {
         public MapperProfile()
         {
-            CreateMap<IStudentService, StudentService>();
+            CreateMap<AddStudentRequest, StudentModel>().ReverseMap();
         }
     }
 }
